@@ -1,0 +1,332 @@
+/* GLOBAL */
+
+	#ubecube_3d * {
+		-webkit-box-sizing: content-box;
+		   -moz-box-sizing: content-box;
+				box-sizing: content-box;
+	}
+	
+	.ubecubeNav img	{
+		display: inline;
+	}
+
+/* TEXT */
+	
+	#ubecube_3d h5,
+	#ubecube_3d p {
+		font-family: Helvetica, Arial, sans-serif;
+		font-weight: 300;
+		font-size: 13px;
+		line-height: 1.625;
+		margin: 0;
+		padding: 0;
+		color: #777777 !important;
+	}
+	
+	/* News' Title */
+	#ubecube_3d h5 {
+		font-weight: bold;
+		text-align: center;
+	}
+	
+	/* News' Text */
+	#ubecube_3d p {
+		text-align: left;
+	}
+	
+	/* Trattini a capo */
+	#ubecube_3d p {
+		-webkit-hyphens: auto;
+		   -moz-hyphens: auto;
+				hyphens: auto;
+	}
+	
+	
+/* CUBE'S NAVIGATOR */
+	
+	/* Navigator's container */
+	.ubecubeNav {
+		position: relative;
+		display: box;
+		width: 150px;
+		height: 20px;
+		margin-top: 5px;
+		z-index: 50;
+	}
+	
+	/* Dots scroll container */
+	.ubecubeNav .dotsScrollContainer {
+		display: block;
+		width: 100px;
+		margin: 0 auto;
+		text-align: center;
+		cursor: default;
+	}
+	
+	/* Dots Scroll */
+	.ubecubeNav img.dotsScroll {
+		width: 10px;
+		background: url(img/quadratini-40x128.png);
+		background-size: 10px 32px;
+		background-position: 0 0;
+		cursor: pointer;
+	}
+	
+	.ubecubeNav img.dotsScroll:hover {
+		background-position: 0 -11px;
+	}
+	
+	.ubecubeNav img.dotsScroll.on {
+		background-position: 0 -22px;
+	}
+
+/* BUTTON */
+	
+	/* Button Style */
+	img.nextNews,
+	img.previousNews,
+	img.pauseLoop {
+		position: absolute;
+		width: 15px;
+		height: 15px;
+		background: url(img/buttons-60x316.png);
+		background-size: 15px 79px;
+		z-index: 50;
+		cursor: pointer;
+	}
+	
+	img.nextNews {
+		right: 10px;
+		top: 0px;
+		background-position: 0 0;
+	}
+	
+	img.previousNews {
+		left: 10px;
+		background-position: 0 0;
+		-webkit-transform: rotate( 180deg );
+		   -moz-transform: rotate( 180deg );
+				transform: rotate( 180deg );
+	}
+	
+	img.pauseLoop {
+		right: 0px;
+		top: -20px;
+		background-position: 0 -48px;
+	}
+	
+	img.nextNews:hover,
+	img.previousNews:hover {
+		background-position: 0 -16px;
+	}
+	
+	img.pauseLoop:hover {
+		background-position: 0 -64px;
+	}
+	
+	img.nextNews:active,
+	img.previousNews:active {
+		background-position: 0 -32px;
+	}
+	
+	img.nextNews.hideButton,
+	img.previousNews.hideButton,
+	img.pauseLoop.hideButton {
+		opacity: 0;
+	}
+	
+	img.nextNews.showButton,
+	img.previousNews.showButton,
+	img.pauseLoop.showButton {
+		opacity: 1;
+	}
+	
+	img.pauseLoop.pauseOn {
+		background-position: 0 -64px;
+		opacity: 1;
+		-webkit-transform: rotate( 90deg );
+		   -moz-transform: rotate( 90deg );
+				transform: rotate( 90deg );
+	}
+	
+	/* Button Animation */
+	img.nextNews.hideButton,
+	img.previousNews.hideButton,
+	img.pauseLoop.hideButton {
+		-webkit-transition: opacity 1s linear 3s, -webkit-transform 0.5s linear;
+		   -moz-transition: opacity 1s linear 3s, -moz-transform 0.5s linear;
+				transition: opacity 1s linear 3s, transform 0.5s linear;
+	}
+	
+	img.nextNews.showButton,
+	img.previousNews.showButton,
+	img.pauseLoop.showButton {
+		-webkit-transition: opacity 1s ease 0.5s, -webkit-transform 0.5s linear;
+		   -moz-transition: opacity 1s ease 0.5s, -moz-transform 0.5s linear;
+				transition: opacity 1s ease 0.5s, transform 0.5s linear;
+	}
+
+	
+/* 3D STYLES (DeSandro's method) */
+
+	/* Cube Container */
+	#ubecube_3d {
+		width: 150px;
+		height: 150px;
+		display: block;
+		position: relative;
+		-webkit-perspective: 1000px;
+		   -moz-perspective: 1000px;
+				perspective: 1000px;
+	}
+	
+	/* Cube */
+	#ubecube_3d .cube_3d {
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		
+		-webkit-transform-style: preserve-3d;
+		   -moz-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				
+		-webkit-transition: -webkit-transform 2s ease;
+		   -moz-transition: -moz-transform 2s ease;
+				transition: transform 2s ease;
+				
+		-webkit-transform: translateZ( -75px );
+		   -moz-transform: translateZ( -75px );
+				transform: translateZ( -75px );
+				
+		z-index: 30;
+	}
+	
+	/* All Face */
+	#ubecube_3d .cube_3d li {
+		width: 142px;
+		height: 145px;
+		padding: 3px 3px 0;
+		display: block;
+		position: absolute;
+		background-color: #F9F9F9 !important;
+		border: 1px solid #EEEEEE !important;
+		overflow: hidden;
+		-webkit-backface-visibility: hidden;
+		   -moz-backface-visibility: hidden;
+				backface-visibility: hidden;
+	}
+	
+	/* Front Face */
+	#ubecube_3d .cube_3d li:nth-child(1) {
+		-webkit-transform: translateZ( 75px );
+		   -moz-transform: translateZ( 75px );
+				transform: translateZ( 75px );
+	}
+	
+	/* Back Face */
+	#ubecube_3d .cube_3d li:nth-child(2) {
+		-webkit-transform: rotateX( 180deg ) translateZ( 75px );
+		   -moz-transform: rotateX( 180deg ) translateZ( 75px );
+				transform: rotateX( 180deg ) translateZ( 75px );
+	}
+	
+	/* Right Face */
+	#ubecube_3d .cube_3d li:nth-child(3) {
+		-webkit-transform: rotateY( 90deg ) translateZ( 75px );
+		   -moz-transform: rotateY( 90deg ) translateZ( 75px );
+				transform: rotateY( 90deg ) translateZ( 75px );
+	}
+	
+	/* Left Face */
+	#ubecube_3d .cube_3d li:nth-child(4) {
+		-webkit-transform: rotateY( -90deg ) translateZ( 75px );
+		   -moz-transform: rotateY( -90deg ) translateZ( 75px );
+				transform: rotateY( -90deg ) translateZ( 75px );
+	}
+	
+	/* Top Face */
+	#ubecube_3d .cube_3d li:nth-child(5) {
+		-webkit-transform: rotateX( 90deg ) translateZ( 75px );
+		   -moz-transform: rotateX( 90deg ) translateZ( 75px );
+				transform: rotateX( 90deg ) translateZ( 75px );
+	}
+	
+	/* Bottom Face */
+	#ubecube_3d .cube_3d li:nth-child(6) {
+		-webkit-transform: rotateX( -90deg ) translateZ( 75px );
+		   -moz-transform: rotateX( -90deg ) translateZ( 75px );
+				transform: rotateX( -90deg ) translateZ( 75px );
+	}
+	
+	
+/* 3D ANIMATIONS */
+
+	/* Show Front Face */
+	#ubecube_3d .cube_3d.showFront {
+		-webkit-transform: translateZ( -75px );
+		   -moz-transform: translateZ( -75px );
+				transform: translateZ( -75px );
+	}
+	
+	/* Show Back Face */
+	#ubecube_3d .cube_3d.showBack {
+		-webkit-transform: translateZ( -75px ) rotateX( 180deg );
+		   -moz-transform: translateZ( -75px ) rotateX( 180deg );
+				transform: translateZ( -75px ) rotateX( 180deg );
+	}
+	
+	/* Show Right Face */
+	#ubecube_3d .cube_3d.showRight {
+		-webkit-transform: translateZ( -75px ) rotateY( -90deg );
+		   -moz-transform: translateZ( -75px ) rotateY( -90deg );
+				transform: translateZ( -75px ) rotateY( -90deg );
+	}
+	
+	/* Show Left Face */
+	#ubecube_3d .cube_3d.showLeft {
+		-webkit-transform: translateZ( -75px ) rotateY( 90deg );
+		   -moz-transform: translateZ( -75px ) rotateY( 90deg );
+				transform: translateZ( -75px ) rotateY( 90deg );
+	}
+	
+	/* Show Top Face */
+	#ubecube_3d .cube_3d.showTop {
+		-webkit-transform: translateZ( -75px ) rotateX( -90deg );
+		   -moz-transform: translateZ( -75px ) rotateX( -90deg );
+				transform: translateZ( -75px ) rotateX( -90deg );
+	}
+	
+	/* Show Bottom Face */
+	#ubecube_3d .cube_3d.showBottom {
+		-webkit-transform: translateZ( -75px ) rotateX( 90deg );
+		   -moz-transform: translateZ( -75px ) rotateX( 90deg );
+				transform: translateZ( -75px ) rotateX( 90deg );
+	}
+
+	
+/* NO JavaScript or NO 3D support Styles */
+
+	#ubecube_3d .no_3d_support {
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	}
+	 
+	#ubecube_3d .no_3d_support li {
+		width: 120px;
+		min-height: 145px;
+		padding: 3px 3px 0;
+		margin: 3px 0;
+		display: block;
+		background-color: #F9F9F9 !important;
+		border: 1px solid #EEEEEE !important;
+		overflow: hidden;
+	}
+	 
+	#ubecube_3d .no_3d_support ~ .nextNews,
+	#ubecube_3d .no_3d_support ~ .previousNews,
+	#ubecube_3d .no_3d_support ~ .pauseLoop {
+		display: none;
+	}
